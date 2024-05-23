@@ -2,7 +2,7 @@
 CXX = clang++
 FLG = -Wall -g
 
-all: demo.exe test.exe
+all: demo.exe test.exe Demo2.exe
 
 test.exe: Test.o TestCounter.o
 	$(CXX) $(FLG) -o test.exe Test.o TestCounter.o Graph.o Algorithms.o
@@ -12,9 +12,15 @@ test.exe: Test.o TestCounter.o
 demo.exe: demo.o Graph.o Algorithms.o
 	$(CXX) $(FLG) -o demo.exe demo.o Graph.o Algorithms.o
 
+Demo2.exe: Demo2.o Graph.o Algorithms.o
+	$(CXX) $(FLG) -o Demo2.exe Demo2.o Graph.o Algorithms.o
+
 
 demo.o: demo.cpp
 	$(CXX) $(FLG) -c demo.cpp -o demo.o
+
+Demo2.o: Demo2.cpp
+	$(CXX) $(FLG) -c Demo2.cpp -o Demo2.o
 
 
 Test.o: Test.cpp doctest.h Graph.hpp Algorithms.hpp
